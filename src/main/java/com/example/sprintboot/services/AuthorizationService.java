@@ -1,23 +1,16 @@
-package com.example.sprintboot.infra.security;
+package com.example.sprintboot.services;
 
-import com.example.sprintboot.domain.user.User;
 import com.example.sprintboot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-
-@Component
-
-public class CustomUserDetailsService  implements UserDetailsService {
+public class AuthorizationService implements UserDetailsService {
     @Autowired
-    private UserRepository repository;
+    UserRepository repository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
         return repository.findByEmail(username);
     }
 }
